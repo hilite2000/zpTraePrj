@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>高中学习生活 - 首页</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="assets/js/tailwind.min.js"></script>
+    <!-- Font Awesome -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#e6f0ff',
+                            100: '#cce0ff',
+                            200: '#99c2ff',
+                            300: '#66a3ff',
+                            400: '#3385ff',
+                            500: '#0066ff',
+                            600: '#0052cc',
+                            700: '#003d99',
+                            800: '#002966',
+                            900: '#001433',
+                        },
+                        secondary: {
+                            50: '#e6f7ff',
+                            100: '#ccefff',
+                            200: '#99dfff',
+                            300: '#66cfff',
+                            400: '#33bfff',
+                            500: '#00afff',
+                            600: '#0088cc',
+                            700: '#006699',
+                            800: '#004466',
+                            900: '#002233',
+                        },
+                        accent: {
+                            50: '#fff0e6',
+                            100: '#ffe0cc',
+                            200: '#ffc299',
+                            300: '#ff8533',
+                            400: '#ff6600',
+                            500: '#e65c00',
+                            600: '#cc5200',
+                            700: '#b34700',
+                            800: '#993d00',
+                            900: '#803300',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- 自定义工具类 -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50 text-gray-900">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
+                    <i class="fa fa-graduation-cap text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-primary-700">高中时光</span>
+            </a>
+
+            <!-- 桌面端导航链接 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-primary-700 font-medium hover:text-primary-500 transition-colors">首页</a>
+                <a href="subjects.html" class="text-gray-600 hover:text-primary-500 transition-colors">学习科目</a>
+                <a href="activities.html" class="text-gray-600 hover:text-primary-500 transition-colors">校园活动</a>
+                <a href="works.html" class="text-gray-600 hover:text-primary-500 transition-colors">学生作品</a>
+                <a href="resources.html" class="text-gray-600 hover:text-primary-500 transition-colors">学习资源</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary-500 transition-colors">联系我们</a>
+                <a href="rollcall.html" class="text-gray-600 hover:text-primary-500 transition-colors">课堂点名</a>
+            </div>
+
+            <!-- 移动端汉堡菜单按钮 -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-primary-700 font-medium py-2 hover:text-primary-500 transition-colors">首页</a>
+                <a href="subjects.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学习科目</a>
+                <a href="activities.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">校园活动</a>
+                <a href="works.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学生作品</a>
+                <a href="resources.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学习资源</a>
+                <a href="contact.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">联系我们</a>
+                <a href="rollcall.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">课堂点名</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 英雄区域 -->
+        <section class="relative bg-gradient-to-r from-primary-600 to-secondary-500 text-white py-20 md:py-28">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-shadow">探索高中学习生活的精彩瞬间</h1>
+                    <p class="text-lg md:text-xl mb-8 text-primary-50">记录成长历程，分享学习经验，展现青春风采</p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <a href="subjects.html" class="bg-white text-primary-700 font-medium px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-shadow hover-scale">
+                            探索学习科目
+                        </a>
+                        <a href="activities.html" class="bg-transparent border-2 border-white text-white font-medium px-6 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition-colors hover-scale">
+                            浏览校园活动
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- 装饰元素 -->
+            <div class="absolute bottom-0 left-0 w-full overflow-hidden leading-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-16 md:h-24 text-gray-50 fill-current">
+                    <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,130.83,111.4,205.24,91.23,280.35,70.64,321.39,56.44,321.39,56.44Z"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- 特色板块 -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">校园生活亮点</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 学习科目卡片 -->
+                    <a href="subjects.html" class="bg-white rounded-xl shadow-md overflow-hidden hover-scale">
+                        <div class="h-48 bg-gradient-to-br from-primary-400 to-primary-600 flex items-center justify-center">
+                            <i class="fa fa-book text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">学习科目</h3>
+                            <p class="text-gray-600 mb-4">探索各学科的学习方法，分享学习心得，助力学业成长</p>
+                            <div class="flex items-center text-primary-600 font-medium">
+                                <span>了解更多</span>
+                                <i class="fa fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 校园活动卡片 -->
+                    <a href="activities.html" class="bg-white rounded-xl shadow-md overflow-hidden hover-scale">
+                        <div class="h-48 bg-gradient-to-br from-secondary-400 to-secondary-600 flex items-center justify-center">
+                            <i class="fa fa-calendar-check-o text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">校园活动</h3>
+                            <p class="text-gray-600 mb-4">记录丰富多彩的校园活动，展现青春活力与团队精神</p>
+                            <div class="flex items-center text-secondary-600 font-medium">
+                                <span>了解更多</span>
+                                <i class="fa fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- 学生作品卡片 -->
+                    <a href="works.html" class="bg-white rounded-xl shadow-md overflow-hidden hover-scale">
+                        <div class="h-48 bg-gradient-to-br from-accent-400 to-accent-600 flex items-center justify-center">
+                            <i class="fa fa-paint-brush text-white text-5xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">学生作品</h3>
+                            <p class="text-gray-600 mb-4">展示学生的创意作品，包括绘画、作文、科技制作等</p>
+                            <div class="flex items-center text-accent-600 font-medium">
+                                <span>了解更多</span>
+                                <i class="fa fa-arrow-right ml-2"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学校新闻 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <div class="flex justify-between items-center mb-12">
+                    <h2 class="text-3xl font-bold text-gray-800">校园新闻</h2>
+                    <a href="#" class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                        查看全部 <i class="fa fa-angle-right ml-1"></i>
+                    </a>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 新闻卡片1 -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm overflow-hidden hover-scale">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-newspaper-o text-gray-400 text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <i class="fa fa-calendar mr-2"></i>
+                                <span>2026-02-01</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">学校举办春季运动会</h3>
+                            <p class="text-gray-600 mb-4">我校成功举办2026年春季运动会，学生们展现了良好的体育精神和团队合作能力。</p>
+                            <a href="#" class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                阅读全文 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 新闻卡片2 -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm overflow-hidden hover-scale">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-trophy text-gray-400 text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <i class="fa fa-calendar mr-2"></i>
+                                <span>2026-01-28</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">我校学生在数学竞赛中获佳绩</h3>
+                            <p class="text-gray-600 mb-4">高三年级张同学在全国数学竞赛中获得一等奖，为学校争得荣誉。</p>
+                            <a href="#" class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                阅读全文 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- 新闻卡片3 -->
+                    <div class="bg-gray-50 rounded-xl shadow-sm overflow-hidden hover-scale">
+                        <div class="h-48 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-music text-gray-400 text-4xl"></i>
+                        </div>
+                        <div class="p-6">
+                            <div class="flex items-center text-sm text-gray-500 mb-3">
+                                <i class="fa fa-calendar mr-2"></i>
+                                <span>2026-01-20</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-3 text-gray-800">校园文化艺术节圆满结束</h3>
+                            <p class="text-gray-600 mb-4">为期一周的校园文化艺术节圆满结束，同学们展现了丰富多彩的艺术才华。</p>
+                            <a href="#" class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                阅读全文 <i class="fa fa-angle-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学习资源快速链接 -->
+        <section class="py-16 bg-primary-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">学习资源</h2>
+                
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <a href="resources.html" class="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center text-center hover-scale">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-file-text-o text-primary-600 text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-gray-800">课件下载</span>
+                    </a>
+                    
+                    <a href="resources.html" class="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center text-center hover-scale">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-pencil text-primary-600 text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-gray-800">习题练习</span>
+                    </a>
+                    
+                    <a href="resources.html" class="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center text-center hover-scale">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-lightbulb-o text-primary-600 text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-gray-800">学习方法</span>
+                    </a>
+                    
+                    <a href="resources.html" class="bg-white rounded-lg shadow-sm p-4 flex flex-col items-center justify-center text-center hover-scale">
+                        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4">
+                            <i class="fa fa-users text-primary-600 text-2xl"></i>
+                        </div>
+                        <span class="font-medium text-gray-800">学习小组</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 学生感言 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">学生感言</h2>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-gray-50 rounded-xl p-8 shadow-sm">
+                        <div class="flex items-center mb-6">
+                            <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-quote-left text-primary-500 text-2xl"></i>
+                            </div>
+                        </div>
+                        <p class="text-lg text-gray-700 italic mb-8">
+                            高中三年是我人生中最宝贵的时光，在这里我不仅学到了知识，更收获了友谊和成长。学校的各种活动让我的生活充满色彩，老师们的指导让我明确了未来的方向。
+                        </p>
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">李明</h4>
+                                <p class="text-sm text-gray-500">高三(1)班</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 关于我们 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+                    <p class="text-gray-400 mb-4">
+                        记录高中学习生活的精彩瞬间，分享学习经验，展现青春风采。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 快速链接 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="subjects.html" class="text-gray-400 hover:text-white transition-colors">学习科目</a></li>
+                        <li><a href="activities.html" class="text-gray-400 hover:text-white transition-colors">校园活动</a></li>
+                        <li><a href="works.html" class="text-gray-400 hover:text-white transition-colors">学生作品</a></li>
+                        <li><a href="resources.html" class="text-gray-400 hover:text-white transition-colors">学习资源</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <!-- 联系信息 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">北京市海淀区中关村大街1号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">010-12345678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">info@highschool.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 订阅 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅通知</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通知，及时获取校园最新动态
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 rounded-l-lg w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 高中时光. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 移动端菜单脚本 -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

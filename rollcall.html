@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>课堂点名 - 高中时光</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="assets/js/tailwind.min.js"></script>
+    <!-- Font Awesome -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#e6f0ff',
+                            100: '#cce0ff',
+                            200: '#99c2ff',
+                            300: '#66a3ff',
+                            400: '#3385ff',
+                            500: '#0066ff',
+                            600: '#0052cc',
+                            700: '#003d99',
+                            800: '#002966',
+                            900: '#001433',
+                        },
+                        secondary: {
+                            50: '#e6f7ff',
+                            100: '#ccefff',
+                            200: '#99dfff',
+                            300: '#66cfff',
+                            400: '#33bfff',
+                            500: '#00afff',
+                            600: '#0088cc',
+                            700: '#006699',
+                            800: '#004466',
+                            900: '#002233',
+                        },
+                        accent: {
+                            50: '#fff0e6',
+                            100: '#ffe0cc',
+                            200: '#ffc299',
+                            300: '#ff8533',
+                            400: '#ff6600',
+                            500: '#e65c00',
+                            600: '#cc5200',
+                            700: '#b34700',
+                            800: '#993d00',
+                            900: '#803300',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- 自定义工具类 -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50 text-gray-900">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
+                    <i class="fa fa-graduation-cap text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-primary-700">高中时光</span>
+            </a>
+
+            <!-- 桌面端导航链接 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-primary-500 transition-colors">首页</a>
+                <a href="subjects.html" class="text-gray-600 hover:text-primary-500 transition-colors">学习科目</a>
+                <a href="activities.html" class="text-gray-600 hover:text-primary-500 transition-colors">校园活动</a>
+                <a href="works.html" class="text-gray-600 hover:text-primary-500 transition-colors">学生作品</a>
+                <a href="resources.html" class="text-gray-600 hover:text-primary-500 transition-colors">学习资源</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary-500 transition-colors">联系我们</a>
+                <a href="rollcall.html" class="text-primary-700 font-medium hover:text-primary-500 transition-colors">课堂点名</a>
+            </div>
+
+            <!-- 移动端汉堡菜单按钮 -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">首页</a>
+                <a href="subjects.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学习科目</a>
+                <a href="activities.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">校园活动</a>
+                <a href="works.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学生作品</a>
+                <a href="resources.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学习资源</a>
+                <a href="contact.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">联系我们</a>
+                <a href="rollcall.html" class="text-primary-700 font-medium py-2 hover:text-primary-500 transition-colors">课堂点名</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 页面标题 -->
+        <section class="bg-gradient-to-r from-primary-600 to-secondary-500 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-2">课堂点名</h1>
+                        <p class="text-primary-100">随机点名系统，公平公正地选择学生</p>
+                    </div>
+                    <nav class="mt-4 md:mt-0">
+                        <ol class="flex items-center space-x-2 text-sm">
+                            <li><a href="index.html" class="text-primary-100 hover:text-white transition-colors">首页</a></li>
+                            <li class="text-primary-200">/</li>
+                            <li class="text-white font-medium">课堂点名</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- 点名功能 -->
+        <section class="py-16 bg-white">
+            <div class="container mx-auto px-4">
+                <!-- 班级选择和时间设置 -->
+                <div class="max-w-4xl mx-auto mb-12">
+                    <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                        <div class="flex flex-col sm:flex-row items-center gap-3">
+                            <label for="class-select" class="text-lg font-medium text-gray-700">选择班级：</label>
+                            <select id="class-select" class="px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent w-full sm:w-auto">
+                                <option value="class1">高三(1)班</option>
+                                <option value="class2">高三(2)班</option>
+                            </select>
+                        </div>
+                        <div class="flex flex-col sm:flex-row items-center gap-3 mt-4 sm:mt-0 w-full sm:w-auto">
+                            <label for="time-setting" class="text-lg font-medium text-gray-700 whitespace-nowrap">设置时间（秒）：</label>
+                            <div class="flex items-center gap-3 w-full sm:w-48">
+                                <input type="range" id="time-setting" min="1" max="9" value="3" step="1" class="w-full h-6 bg-gray-200 rounded-lg appearance-none cursor-pointer focus:outline-none focus:ring-2 focus:ring-primary-500">
+                                <span id="time-value" class="text-lg font-medium text-gray-700 whitespace-nowrap w-8 text-center">3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 姓名显示区域 -->
+                <div class="max-w-4xl mx-auto mb-12">
+                    <div class="bg-primary-50 rounded-2xl p-8 md:p-12 text-center shadow-md">
+                        <h2 class="text-2xl md:text-3xl font-bold mb-8 text-gray-800">当前选中</h2>
+                        <div id="name-display" class="text-4xl md:text-6xl font-bold text-primary-700 mb-8 min-h-[120px] flex items-center justify-center">
+                            准备就绪
+                        </div>
+                        <div id="status-display" class="text-lg text-gray-600 mb-4">
+                            点击开始按钮开始点名
+                        </div>
+                        <div id="countdown-display" class="text-xl font-semibold text-primary-600 mb-2 hidden">
+                            剩余时间：3.00秒
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 控制按钮 -->
+                <div class="max-w-2xl mx-auto flex justify-center">
+                    <button id="start-btn" class="px-8 py-4 bg-primary-600 text-white rounded-lg font-medium text-lg hover:bg-primary-700 transition-colors hover-scale shadow-md">
+                        <i class="fa fa-play mr-2"></i> 开始
+                    </button>
+                </div>
+
+                <!-- 学生列表 -->
+                <div class="max-w-5xl mx-auto mt-12">
+                    <h3 class="text-lg font-bold mb-4 text-center text-gray-800">学生名单</h3>
+                    <div id="student-list" class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-2">
+                        <!-- 学生名单将通过JavaScript动态生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 关于我们 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+                    <p class="text-gray-400 mb-4">
+                        记录高中学习生活的精彩瞬间，分享学习经验，展现青春风采。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 快速链接 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="subjects.html" class="text-gray-400 hover:text-white transition-colors">学习科目</a></li>
+                        <li><a href="activities.html" class="text-gray-400 hover:text-white transition-colors">校园活动</a></li>
+                        <li><a href="works.html" class="text-gray-400 hover:text-white transition-colors">学生作品</a></li>
+                        <li><a href="resources.html" class="text-gray-400 hover:text-white transition-colors">学习资源</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                        <li><a href="rollcall.html" class="text-gray-400 hover:text-white transition-colors">课堂点名</a></li>
+                    </ul>
+                </div>
+
+                <!-- 联系信息 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">北京市海淀区中关村大街1号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">010-12345678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">info@highschool.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 订阅 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅通知</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通知，及时获取校园最新动态
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 rounded-l-lg w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 高中时光. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 脚本 -->
+    <script>
+        // 移动端菜单脚本
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 点名功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 直接嵌入学生数据，避免文件系统访问问题
+            const studentData = {
+                "class1": [
+                    "李明", "张雨晴", "王浩宇", "陈雨桐", "林雨萱", "赵天佑", "陈思远", "刘佳音", "李明亮", "张思琪",
+                    "王佳乐", "陈思思", "林小明", "赵小亮", "陈小雨", "周佳欣", "吴宇航", "郑子豪", "孙雨晨", "马思远",
+                    "朱梦琪", "胡雨桐", "郭宇航", "黄佳怡", "杨雨晨", "高子轩", "何思远", "罗佳欣", "梁雨桐", "宋子豪",
+                    "谢雨晨", "韩思远", "唐佳怡", "冯雨桐", "蒋子豪", "沈雨晨", "韩佳怡", "杨思远", "黄雨桐", "吴佳怡",
+                    "张宇航", "刘佳怡"
+                ],
+                "class2": [
+                    "王小红", "李小花", "张小明", "刘小强", "陈小刚", "林小丽", "赵小美", "孙小明", "周小强", "吴小刚",
+                    "郑小丽", "王小美", "李小明", "张小强", "刘小刚", "何雨欣", "罗子轩", "梁佳怡", "宋雨泽", "谢子涵",
+                    "马小明", "朱小强", "胡小刚", "郭小丽", "黄小美", "杨小明", "高小强", "何小刚", "罗小丽", "梁小美",
+                    "宋小明", "谢小强", "韩小刚", "唐小丽", "冯小美", "蒋小明", "沈小强", "韩小丽", "杨小美", "黄小明",
+                    "吴小强", "张小刚", "刘小丽"
+                ]
+            };
+            
+            let students = [];
+            let currentClass = 'class1';
+            let isRolling = false;
+            let rollInterval;
+            let autoStopTimeout;
+            let nameDisplay = document.getElementById('name-display');
+            let statusDisplay = document.getElementById('status-display');
+            let countdownDisplay = document.getElementById('countdown-display');
+            let startBtn = document.getElementById('start-btn');
+            let classSelect = document.getElementById('class-select');
+            let timeSetting = document.getElementById('time-setting');
+            let timeValue = document.getElementById('time-value');
+            let studentList = document.getElementById('student-list');
+
+            // 加载学生数据
+            function loadStudents() {
+                try {
+                    students = studentData[currentClass];
+                    updateStudentList();
+                } catch (error) {
+                    console.error('加载学生数据失败:', error);
+                    nameDisplay.textContent = '加载失败';
+                }
+            }
+
+            // 更新学生列表显示
+            function updateStudentList() {
+                studentList.innerHTML = '';
+                students.forEach(student => {
+                    const studentItem = document.createElement('div');
+                    studentItem.className = 'bg-gray-50 rounded-md p-2 text-center text-gray-700 text-sm';
+                    studentItem.textContent = student;
+                    studentList.appendChild(studentItem);
+                });
+            }
+
+            // 开始点名
+            function startRoll() {
+                if (isRolling) return;
+                
+                isRolling = true;
+                const stopTime = parseInt(timeSetting.value) * 1000;
+                let remainingTime = stopTime;
+                statusDisplay.textContent = '正在随机选择...';
+                nameDisplay.classList.add('name-animation');
+                countdownDisplay.classList.remove('hidden');
+                startBtn.innerHTML = '<i class="fa fa-stop mr-2"></i> 完成';
+                startBtn.classList.remove('bg-primary-600', 'hover:bg-primary-700');
+                startBtn.classList.add('bg-accent-600', 'hover:bg-accent-700');
+
+                // 更新倒计时显示
+                function updateCountdown() {
+                    remainingTime -= 10;
+                    if (remainingTime < 0) remainingTime = 0;
+                    const seconds = (remainingTime / 1000).toFixed(2);
+                    countdownDisplay.textContent = `剩余时间：${seconds}秒`;
+                }
+
+                rollInterval = setInterval(() => {
+                    const randomIndex = Math.floor(Math.random() * students.length);
+                    nameDisplay.textContent = students[randomIndex];
+                }, 100);
+
+                // 倒计时定时器，每10毫秒更新一次
+                const countdownInterval = setInterval(updateCountdown, 10);
+
+                // 设置自动停止
+                autoStopTimeout = setTimeout(() => {
+                    clearInterval(countdownInterval);
+                    stopRoll();
+                }, stopTime);
+            }
+
+            // 停止点名
+            function stopRoll() {
+                if (!isRolling) return;
+                
+                clearInterval(rollInterval);
+                clearTimeout(autoStopTimeout);
+                isRolling = false;
+                statusDisplay.textContent = '点名完成';
+                countdownDisplay.classList.add('hidden');
+                nameDisplay.classList.remove('name-animation');
+                startBtn.innerHTML = '<i class="fa fa-play mr-2"></i> 开始';
+                startBtn.classList.remove('bg-accent-600', 'hover:bg-accent-700');
+                startBtn.classList.add('bg-primary-600', 'hover:bg-primary-700');
+            }
+
+            // 班级选择变化
+            classSelect.addEventListener('change', function() {
+                currentClass = this.value;
+                loadStudents();
+                nameDisplay.textContent = '准备就绪';
+                statusDisplay.textContent = '点击开始按钮开始点名';
+                if (isRolling) {
+                    stopRoll();
+                }
+            });
+
+            // 按钮事件
+            startBtn.addEventListener('click', function() {
+                if (isRolling) {
+                    stopRoll();
+                } else {
+                    startRoll();
+                }
+            });
+
+            // 时间设置滑块变化
+            timeSetting.addEventListener('input', function() {
+                timeValue.textContent = this.value;
+            });
+
+            // 初始化
+            loadStudents();
+        });
+    </script>
+</body>
+</html>

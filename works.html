@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生作品 - 高中时光</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="assets/js/tailwind.min.js"></script>
+    <!-- Font Awesome -->
+    <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+    <!-- 自定义Tailwind配置 -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#e6f0ff',
+                            100: '#cce0ff',
+                            200: '#99c2ff',
+                            300: '#66a3ff',
+                            400: '#3385ff',
+                            500: '#0066ff',
+                            600: '#0052cc',
+                            700: '#003d99',
+                            800: '#002966',
+                            900: '#001433',
+                        },
+                        secondary: {
+                            50: '#e6f7ff',
+                            100: '#ccefff',
+                            200: '#99dfff',
+                            300: '#66cfff',
+                            400: '#33bfff',
+                            500: '#00afff',
+                            600: '#0088cc',
+                            700: '#006699',
+                            800: '#004466',
+                            900: '#002233',
+                        },
+                        accent: {
+                            50: '#fff0e6',
+                            100: '#ffe0cc',
+                            200: '#ffc299',
+                            300: '#ff8533',
+                            400: '#ff6600',
+                            500: '#e65c00',
+                            600: '#cc5200',
+                            700: '#b34700',
+                            800: '#993d00',
+                            900: '#803300',
+                        },
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+    <!-- 自定义工具类 -->
+    <link href="assets/css/custom.css" rel="stylesheet">
+</head>
+<body class="font-sans bg-gray-50 text-gray-900">
+    <!-- 导航栏 -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="index.html" class="flex items-center space-x-2">
+                <div class="w-10 h-10 bg-primary-600 rounded-full flex items-center justify-center">
+                    <i class="fa fa-graduation-cap text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-primary-700">高中时光</span>
+            </a>
+
+            <!-- 桌面端导航链接 -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="index.html" class="text-gray-600 hover:text-primary-500 transition-colors">首页</a>
+                <a href="subjects.html" class="text-gray-600 hover:text-primary-500 transition-colors">学习科目</a>
+                <a href="activities.html" class="text-gray-600 hover:text-primary-500 transition-colors">校园活动</a>
+                <a href="works.html" class="text-primary-700 font-medium hover:text-primary-500 transition-colors">学生作品</a>
+                <a href="resources.html" class="text-gray-600 hover:text-primary-500 transition-colors">学习资源</a>
+                <a href="contact.html" class="text-gray-600 hover:text-primary-500 transition-colors">联系我们</a>
+                <a href="rollcall.html" class="text-gray-600 hover:text-primary-500 transition-colors">课堂点名</a>
+            </div>
+
+            <!-- 移动端汉堡菜单按钮 -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-gray-600 focus:outline-none">
+                    <i class="fa fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </nav>
+
+        <!-- 移动端导航菜单 -->
+        <div id="mobile-menu" class="md:hidden hidden bg-white border-t">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="index.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">首页</a>
+                <a href="subjects.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学习科目</a>
+                <a href="activities.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">校园活动</a>
+                <a href="works.html" class="text-primary-700 font-medium py-2 hover:text-primary-500 transition-colors">学生作品</a>
+                <a href="resources.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">学习资源</a>
+                <a href="contact.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">联系我们</a>
+                <a href="rollcall.html" class="text-gray-600 py-2 hover:text-primary-500 transition-colors">课堂点名</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- 页面标题 -->
+        <section class="bg-gradient-to-r from-primary-600 to-secondary-500 text-white py-12">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h1 class="text-3xl md:text-4xl font-bold mb-2">学生作品</h1>
+                        <p class="text-primary-100">展示学生的创意作品，包括绘画、作文、科技制作等</p>
+                    </div>
+                    <nav class="mt-4 md:mt-0">
+                        <ol class="flex items-center space-x-2 text-sm">
+                            <li><a href="index.html" class="text-primary-100 hover:text-white transition-colors">首页</a></li>
+                            <li class="text-primary-200">/</li>
+                            <li class="text-white font-medium">学生作品</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品分类筛选 -->
+        <section class="py-8 bg-white shadow-sm">
+            <div class="container mx-auto px-4">
+                <div class="flex flex-wrap items-center justify-center gap-4">
+                    <button class="px-4 py-2 bg-primary-600 text-white rounded-lg font-medium">全部作品</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">绘画</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">作文</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">科技制作</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">摄影</button>
+                    <button class="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors">手工艺品</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品展示 -->
+        <section class="py-16 bg-gray-50">
+            <div class="container mx-auto px-4">
+                <h2 class="text-2xl md:text-3xl font-bold text-center mb-16 text-gray-800">优秀学生作品</h2>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- 作品1 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale" onclick="openModal('work1')">
+                        <div class="relative">
+                            <div class="h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="fa fa-paint-brush text-gray-400 text-5xl"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">绘画</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">《校园之春》</h3>
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fa fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">张雨晴 - 高三(2)班</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                这幅画作描绘了校园春天的美丽景色，通过细腻的笔触和丰富的色彩，展现了校园的生机与活力。
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">2026-01-20</span>
+                                <button class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                    查看详情 <i class="fa fa-angle-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 作品2 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale" onclick="openModal('work2')">
+                        <div class="relative">
+                            <div class="h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="fa fa-file-text-o text-gray-400 text-5xl"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">作文</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">《青春的旋律》</h3>
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fa fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">李明 - 高三(1)班</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                这篇作文以青春为主题，通过生动的叙述和深刻的感悟，表达了对高中生活的珍惜和对未来的憧憬。
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">2026-01-15</span>
+                                <button class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                    查看详情 <i class="fa fa-angle-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 作品3 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale" onclick="openModal('work3')">
+                        <div class="relative">
+                            <div class="h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="fa fa-lightbulb-o text-gray-400 text-5xl"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full">科技制作</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">智能垃圾分类装置</h3>
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fa fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">王浩宇 - 高三(1)班</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                这个智能垃圾分类装置通过传感器识别垃圾类型，自动打开对应垃圾桶，提高垃圾分类的准确性和便利性。
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">2026-01-10</span>
+                                <button class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                    查看详情 <i class="fa fa-angle-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 作品4 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale" onclick="openModal('work4')">
+                        <div class="relative">
+                            <div class="h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="fa fa-camera text-gray-400 text-5xl"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full">摄影</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">《晨读时光》</h3>
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fa fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">陈雨桐 - 高二(3)班</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                这张摄影作品捕捉了清晨校园里学生们专注晨读的场景，通过光影的运用，展现了校园生活的美好瞬间。
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">2026-01-05</span>
+                                <button class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                    查看详情 <i class="fa fa-angle-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 作品5 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale" onclick="openModal('work5')">
+                        <div class="relative">
+                            <div class="h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="fa fa-paint-brush text-gray-400 text-5xl"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full">绘画</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">《梦想起航》</h3>
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fa fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">林雨萱 - 高二(4)班</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                这幅画作以梦想为主题，通过象征手法表达了学生们对未来的向往和追求，画面充满想象力和感染力。
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">2025-12-28</span>
+                                <button class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                    查看详情 <i class="fa fa-angle-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 作品6 -->
+                    <div class="bg-white rounded-xl shadow-md overflow-hidden hover-scale" onclick="openModal('work6')">
+                        <div class="relative">
+                            <div class="h-64 bg-gray-200 flex items-center justify-center">
+                                <i class="fa fa-file-text-o text-gray-400 text-5xl"></i>
+                            </div>
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">作文</span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2 text-gray-800">《师恩难忘》</h3>
+                            <div class="flex items-center mb-3">
+                                <div class="w-8 h-8 bg-gray-200 rounded-full flex items-center justify-center mr-2">
+                                    <i class="fa fa-user text-gray-400 text-sm"></i>
+                                </div>
+                                <span class="text-sm text-gray-600">赵天佑 - 高二(2)班</span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                这篇作文通过具体的事例，表达了对老师辛勤付出的感激之情，情感真挚，语言流畅。
+                            </p>
+                            <div class="flex items-center justify-between">
+                                <span class="text-sm text-gray-500">2025-12-20</span>
+                                <button class="text-primary-600 font-medium hover:text-primary-500 transition-colors">
+                                    查看详情 <i class="fa fa-angle-right ml-1"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 作品详情模态框 -->
+        <div id="work1" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeModal('work1')"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="relative">
+                        <button onclick="closeModal('work1')" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors">
+                            <i class="fa fa-times text-gray-600"></i>
+                        </button>
+                        <div class="h-80 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-paint-brush text-gray-400 text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex flex-wrap items-center justify-between mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">《校园之春》</h2>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mt-2 md:mt-0">绘画</span>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">张雨晴</h3>
+                                <p class="text-sm text-gray-500">高三(2)班 | 2026-01-20</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">作品介绍</h3>
+                            <p class="text-gray-600 mb-4">
+                                《校园之春》是一幅描绘校园春天景色的油画作品。画面中，校园里的樱花盛开，学生们在树下读书、交谈，充满了生机与活力。
+                            </p>
+                            <p class="text-gray-600">
+                                作者通过细腻的笔触和丰富的色彩，展现了校园环境的优美和学生们的青春风采，表达了对校园生活的热爱和珍惜之情。
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">创作心得</h3>
+                            <p class="text-gray-600 italic">
+                                "校园的春天是最美的季节，樱花盛开的时候，整个校园都被粉色的花瓣包围。我希望通过这幅画，记录下这段美好的时光，让更多的人感受到校园生活的温暖和美好。"
+                            </p>
+                        </div>
+                        <div class="flex justify-end">
+                            <button onclick="closeModal('work1')" class="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品详情模态框 -->
+        <div id="work2" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeModal('work2')"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="relative">
+                        <button onclick="closeModal('work2')" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors">
+                            <i class="fa fa-times text-gray-600"></i>
+                        </button>
+                        <div class="h-40 bg-gradient-to-r from-primary-400 to-primary-600 flex items-center justify-center">
+                            <i class="fa fa-file-text-o text-white text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex flex-wrap items-center justify-between mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">《青春的旋律》</h2>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full mt-2 md:mt-0">作文</span>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">李明</h3>
+                                <p class="text-sm text-gray-500">高三(1)班 | 2026-01-15</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">作品介绍</h3>
+                            <p class="text-gray-600 mb-4">
+                                《青春的旋律》是一篇以青春为主题的散文，通过对高中生活的回忆和感悟，表达了对青春的珍惜和对未来的憧憬。
+                            </p>
+                            <p class="text-gray-600">
+                                文章语言优美，情感真挚，结构清晰，通过具体的事例和细腻的描写，展现了青春的多彩和美好，给读者留下了深刻的印象。
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">创作心得</h3>
+                            <p class="text-gray-600 italic">
+                                "高中三年是人生中最美好的时光之一，这里有奋斗的汗水，有友谊的温暖，有成长的喜悦。我希望通过这篇文章，记录下这段难忘的时光，也希望能给学弟学妹们一些启发和鼓励。"
+                            </p>
+                        </div>
+                        <div class="flex justify-end">
+                            <button onclick="closeModal('work2')" class="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品详情模态框 -->
+        <div id="work3" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeModal('work3')"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="relative">
+                        <button onclick="closeModal('work3')" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors">
+                            <i class="fa fa-times text-gray-600"></i>
+                        </button>
+                        <div class="h-80 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-lightbulb-o text-gray-400 text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex flex-wrap items-center justify-between mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">智能垃圾分类装置</h2>
+                            <span class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded-full mt-2 md:mt-0">科技制作</span>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">王浩宇</h3>
+                                <p class="text-sm text-gray-500">高三(1)班 | 2026-01-10</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">作品介绍</h3>
+                            <p class="text-gray-600 mb-4">
+                                智能垃圾分类装置是一个基于Arduino开发的自动垃圾分类系统，通过摄像头和图像处理技术，识别垃圾类型，自动打开对应垃圾桶的盖子，提高垃圾分类的准确性和便利性。
+                            </p>
+                            <p class="text-gray-600">
+                                该装置还配备了显示屏，可以显示垃圾分类的结果和相关知识，有助于提高人们的环保意识。整个装置结构紧凑，操作简单，适合在家庭、学校等场所使用。
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">创作心得</h3>
+                            <p class="text-gray-600 italic">
+                                "垃圾分类是环保的重要环节，但很多人对垃圾分类的知识了解不够，导致分类不准确。我希望通过这个智能装置，简化垃圾分类的过程，让更多的人参与到环保行动中来。"
+                            </p>
+                        </div>
+                        <div class="flex justify-end">
+                            <button onclick="closeModal('work3')" class="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品详情模态框 -->
+        <div id="work4" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeModal('work4')"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="relative">
+                        <button onclick="closeModal('work4')" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors">
+                            <i class="fa fa-times text-gray-600"></i>
+                        </button>
+                        <div class="h-80 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-camera text-gray-400 text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex flex-wrap items-center justify-between mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">《晨读时光》</h2>
+                            <span class="bg-purple-100 text-purple-800 text-xs font-medium px-2.5 py-0.5 rounded-full mt-2 md:mt-0">摄影</span>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">陈雨桐</h3>
+                                <p class="text-sm text-gray-500">高二(3)班 | 2026-01-05</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">作品介绍</h3>
+                            <p class="text-gray-600 mb-4">
+                                《晨读时光》是一张捕捉清晨校园里学生们专注晨读场景的摄影作品。画面中，阳光透过窗户洒进教室，学生们捧着书本，沉浸在知识的海洋中。
+                            </p>
+                            <p class="text-gray-600">
+                                作者通过巧妙的构图和光影的运用，展现了校园生活的美好瞬间，传递了青春奋斗的正能量。这张照片不仅记录了一个普通的早晨，更记录了学生们为梦想努力的珍贵时刻。
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">创作心得</h3>
+                            <p class="text-gray-600 italic">
+                                "每天清晨，当我走进校园，看到同学们专注晨读的样子，都被深深地感动。我希望通过这张照片，记录下这些美好的瞬间，让更多的人感受到校园生活的温暖和力量。"
+                            </p>
+                        </div>
+                        <div class="flex justify-end">
+                            <button onclick="closeModal('work4')" class="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品详情模态框 -->
+        <div id="work5" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeModal('work5')"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="relative">
+                        <button onclick="closeModal('work5')" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors">
+                            <i class="fa fa-times text-gray-600"></i>
+                        </button>
+                        <div class="h-80 bg-gray-200 flex items-center justify-center">
+                            <i class="fa fa-paint-brush text-gray-400 text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex flex-wrap items-center justify-between mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">《梦想起航》</h2>
+                            <span class="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded-full mt-2 md:mt-0">绘画</span>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">林雨萱</h3>
+                                <p class="text-sm text-gray-500">高二(4)班 | 2025-12-28</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">作品介绍</h3>
+                            <p class="text-gray-600 mb-4">
+                                《梦想起航》是一幅以梦想为主题的水彩画作品。画面中，一群学生站在船头，迎着朝阳，向着远方航行。船只象征着青春的旅程，朝阳象征着希望和未来。
+                            </p>
+                            <p class="text-gray-600">
+                                作者通过明快的色彩和流畅的线条，表达了对未来的美好向往和追求梦想的坚定信念。这幅画作不仅展现了作者的艺术才华，更传递了积极向上的正能量。
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">创作心得</h3>
+                            <p class="text-gray-600 italic">
+                                "每个人都有自己的梦想，梦想是我们前进的动力。我希望通过这幅画，鼓励同学们勇敢追求自己的梦想，相信只要努力，就一定能够到达成功的彼岸。"
+                            </p>
+                        </div>
+                        <div class="flex justify-end">
+                            <button onclick="closeModal('work5')" class="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 作品详情模态框 -->
+        <div id="work6" class="fixed inset-0 z-50 hidden">
+            <div class="absolute inset-0 bg-black bg-opacity-50" onclick="closeModal('work6')"></div>
+            <div class="absolute inset-0 flex items-center justify-center p-4">
+                <div class="bg-white rounded-xl shadow-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+                    <div class="relative">
+                        <button onclick="closeModal('work6')" class="absolute top-4 right-4 w-10 h-10 bg-white rounded-full flex items-center justify-center shadow-md hover:bg-gray-100 transition-colors">
+                            <i class="fa fa-times text-gray-600"></i>
+                        </button>
+                        <div class="h-40 bg-gradient-to-r from-primary-400 to-primary-600 flex items-center justify-center">
+                            <i class="fa fa-file-text-o text-white text-6xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-8">
+                        <div class="flex flex-wrap items-center justify-between mb-6">
+                            <h2 class="text-2xl md:text-3xl font-bold text-gray-800">《师恩难忘》</h2>
+                            <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full mt-2 md:mt-0">作文</span>
+                        </div>
+                        <div class="flex items-center mb-6">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full flex items-center justify-center mr-4">
+                                <i class="fa fa-user text-gray-400 text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-gray-800">赵天佑</h3>
+                                <p class="text-sm text-gray-500">高二(2)班 | 2025-12-20</p>
+                            </div>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">作品介绍</h3>
+                            <p class="text-gray-600 mb-4">
+                                《师恩难忘》是一篇以师生情为主题的记叙文，通过回忆高中生活中老师对自己的关心和帮助，表达了对老师辛勤付出的感激之情。
+                            </p>
+                            <p class="text-gray-600">
+                                文章通过具体的事例，如老师深夜批改作业、生病时的关心、考试失利时的鼓励等，展现了老师的无私奉献和关爱学生的精神，情感真挚，语言流畅，感人至深。
+                            </p>
+                        </div>
+                        <div class="mb-8">
+                            <h3 class="text-lg font-semibold mb-3 text-gray-800">创作心得</h3>
+                            <p class="text-gray-600 italic">
+                                "老师们为了我们的成长付出了太多太多，他们不仅教会了我们知识，更教会了我们如何做人。我希望通过这篇文章，表达对老师们的感激之情，也希望能让更多的人感受到老师的伟大和无私。"
+                            </p>
+                        </div>
+                        <div class="flex justify-end">
+                            <button onclick="closeModal('work6')" class="px-6 py-2 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors">
+                                关闭
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 提交作品 -->
+        <section class="py-16 bg-primary-50">
+            <div class="container mx-auto px-4">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-2xl md:text-3xl font-bold mb-6 text-gray-800">展示你的作品</h2>
+                    <p class="text-gray-600 mb-8">
+                        如果你也有优秀的作品想要展示，欢迎联系我们，我们将为你提供展示的平台。
+                    </p>
+                    <a href="contact.html" class="inline-block px-6 py-3 bg-primary-600 text-white rounded-lg font-medium hover:bg-primary-700 transition-colors hover-scale">
+                        联系我们
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- 关于我们 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">关于我们</h3>
+                    <p class="text-gray-400 mb-4">
+                        记录高中学习生活的精彩瞬间，分享学习经验，展现青春风采。
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weixin text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-weibo text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-qq text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- 快速链接 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">快速链接</h3>
+                    <ul class="space-y-2">
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">首页</a></li>
+                        <li><a href="subjects.html" class="text-gray-400 hover:text-white transition-colors">学习科目</a></li>
+                        <li><a href="activities.html" class="text-gray-400 hover:text-white transition-colors">校园活动</a></li>
+                        <li><a href="works.html" class="text-gray-400 hover:text-white transition-colors">学生作品</a></li>
+                        <li><a href="resources.html" class="text-gray-400 hover:text-white transition-colors">学习资源</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-white transition-colors">联系我们</a></li>
+                    </ul>
+                </div>
+
+                <!-- 联系信息 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">联系我们</h3>
+                    <ul class="space-y-2">
+                        <li class="flex items-center">
+                            <i class="fa fa-map-marker text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">北京市海淀区中关村大街1号</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-phone text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">010-12345678</span>
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fa fa-envelope text-gray-400 mr-3"></i>
+                            <span class="text-gray-400">info@highschool.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 订阅 -->
+                <div>
+                    <h3 class="text-lg font-semibold mb-4">订阅通知</h3>
+                    <p class="text-gray-400 mb-4">
+                        订阅我们的通知，及时获取校园最新动态
+                    </p>
+                    <form class="flex">
+                        <input type="email" placeholder="您的邮箱地址" class="px-4 py-2 rounded-l-lg w-full text-gray-900 focus:outline-none focus:ring-2 focus:ring-primary-500">
+                        <button type="submit" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-r-lg transition-colors">
+                            <i class="fa fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-gray-400">
+                <p>&copy; 2026 高中时光. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 移动端菜单脚本 -->
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 模态框脚本
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('hidden');
+            document.body.style.overflow = '';
+        }
+    </script>
+</body>
+</html>
